@@ -22,8 +22,8 @@ function MainPage() {
       <p>
         Page {pageNumber} of {numPages}
       </p>
-      <button onClick={() => setPageNumber(pageNumber + 1)}>Next</button>
       <button onClick={() => setPageNumber(pageNumber - 1)()}>Previous</button>
+      <button onClick={() => setPageNumber(pageNumber + 1)}>Next</button>
       <button onClick={() => setPageNumber(300)}>Page 300</button>
     </div>
   );
