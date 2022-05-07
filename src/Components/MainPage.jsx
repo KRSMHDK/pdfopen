@@ -22,6 +22,7 @@ function MainPage() {
       <p>
         Page {pageNumber} of {numPages}
       </p>
+      
     </div>
   );
 }
