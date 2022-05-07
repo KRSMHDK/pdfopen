@@ -67,15 +67,17 @@ export default function EbookList() {
                   flexDirection: 'column',
                 }}
               >
-                <CardMedia
-                  component="img"
-                  sx={{
-                    // 16:9
-                    pt: '56.25%',
-                  }}
-                  image="https://source.unsplash.com/random"
-                  alt="random"
-                />
+                <Link to="/python">
+                  <CardMedia
+                    component="img"
+                    sx={{
+                      // 16:9
+                      pt: '56.25%',
+                    }}
+                    image="https://source.unsplash.com/random"
+                    alt="random"
+                  />
+                </Link>
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="h2">
                     Python
