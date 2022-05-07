@@ -51,13 +51,16 @@ function MainPage() {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [isLoading, setLoading] = useState(true);
-  const pageNumArr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27];
+  const [pageNumArr, setPageNumArr] = useState([]);
 
   function onDocumentLoadSuccess({ numPages }) {
+    const arr = []
     setNumPages(numPages);
     for (let i = 1; i <= numPages; i++) {
-      pageNumArr.push(i);
+      arr.push(i);
     }
+    setPageNumArr(arr);
+    console.log(arr)
     setLoading(false);
 
   }
