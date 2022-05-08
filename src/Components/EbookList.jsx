@@ -42,7 +42,7 @@ let books = [
 const useStyles = makeStyles({
   box: {
     backgroundPosition: 'center',
-    backgroundImage: `url('/bg.jpg')`,
+    backgroundImage: `url('/main.jpg')`,
   },
 });
 
@@ -67,7 +67,7 @@ export default function EbookList() {
             color="text.primary"
             gutterBottom
           >
-            10 TENZ
+            Welcome to the PDFopen
           </Typography>
           <Typography
             variant="h5"
@@ -75,7 +75,7 @@ export default function EbookList() {
             color="text.secondary"
             paragraph
           >
-            TENZ
+            The number one place to open your PDF
           </Typography>
           <Stack
             sx={{ pt: 4 }}
@@ -93,7 +93,7 @@ export default function EbookList() {
         {/* End hero unit */}
         <Grid container spacing={4}>
           {books.map((book) => (
-            <Grid item key={book} xs={12} sm={6} md={4}>
+            <Grid item key={book} xs={12} sm={6} md={3}>
               <Card
                 sx={{
                   height: '100%',
@@ -104,12 +104,13 @@ export default function EbookList() {
                 <Link to={`/ebook/${book.filename}`}>
                   <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
+                    sx={
+                      {
+                        // 16:9
+                      }
+                    }
                     image={book.image}
-                    alt="random"
+                    alt={book.name}
                   />
                 </Link>
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -124,10 +125,9 @@ export default function EbookList() {
                 <CardActions>
                   <nav>
                     <Link to="/python">
-                      <Button size="small">CLICK ME</Button>
+                      <Button size="small">Open</Button>
                     </Link>
                   </nav>
-                  <Button size="small">Edit</Button>
                 </CardActions>
               </Card>
             </Grid>
