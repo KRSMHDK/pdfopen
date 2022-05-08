@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { pdfjs, Document, Page as ReactPdfPage } from 'react-pdf';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -21,7 +21,6 @@ function Ebook() {
   const book = useRef();
 
   useEffect(() => {
-    setPdfPath(params.ebookid)
     window.addEventListener(
       'keydown',
       (event) => {
@@ -41,7 +40,6 @@ function Ebook() {
   const [pageNumber, setPageNumber] = useState(351);
   const [isLoading, setLoading] = useState(true);
   const [pageNumArr, setpageNumArr] = useState([]);
-  const [pdfPath, setPdfPath] = useState();
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -54,7 +52,7 @@ function Ebook() {
   }
 
   return (
-    <Document file={`/${pdfPath}`} onLoadSuccess={onDocumentLoadSuccess}>
+    <Document file={`/${params.ebookid}`} onLoadSuccess={onDocumentLoadSuccess}>
       <HTMLFlipBook ref={book} width={width} height={height}>
         {pageNumArr.map((num) => (
           <Page pageNumber={num} />
