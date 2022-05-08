@@ -100,38 +100,14 @@ export default function EbookList() {
         <Grid container spacing={4}>
           {books.map((book) => (
             <Grid item key={book} xs={12} sm={6} md={3}>
-              <Card
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
+              <div
+                class="_df_thumb"
+                id="df_intro_thumb"
+                source={`/${book.filename}`}
+                thumb={book.image}
               >
-                <Link to={`/ebook/${book.filename}`}>
-                  <CardMedia
-                    className={classes.root}
-                    component="img"
-                    image={book.image}
-                    alt={book.name}
-                  />
-                </Link>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {book.name}
-                  </Typography>
-                  <Typography>
-                    This is a media card. You can use this section to describe
-                    the content.
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <nav>
-                    <Link to="/python">
-                      <Button size="small">Open</Button>
-                    </Link>
-                  </nav>
-                </CardActions>
-              </Card>
+                {book.name}
+              </div>
             </Grid>
           ))}
         </Grid>
