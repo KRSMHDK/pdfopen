@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@mui/material/Container';
 
 let books = [
@@ -38,11 +39,20 @@ let books = [
   },
 ];
 
+const useStyles = makeStyles({
+  box: {
+    backgroundPosition: 'center',
+    backgroundImage: `url('/bg.jpg')`,
+  },
+});
+
 export default function EbookList() {
+  const classes = useStyles();
   return (
     <main>
       {/* Hero unit */}
       <Box
+        className={classes.box}
         sx={{
           bgcolor: 'background.paper',
           pt: 8,
@@ -57,7 +67,7 @@ export default function EbookList() {
             color="text.primary"
             gutterBottom
           >
-            Album layout
+            10 TENZ
           </Typography>
           <Typography
             variant="h5"
@@ -65,9 +75,7 @@ export default function EbookList() {
             color="text.secondary"
             paragraph
           >
-            Something short and leading about the collection below—its contents,
-            the creator, etc. Make it short and sweet, but not too short so
-            folks don&apos;t simply skip over it entirely.
+            TENZ
           </Typography>
           <Stack
             sx={{ pt: 4 }}
