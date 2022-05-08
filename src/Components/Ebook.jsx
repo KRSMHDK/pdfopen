@@ -3,6 +3,7 @@ import HTMLFlipBook from 'react-pageflip';
 import { pdfjs, Document, Page as ReactPdfPage } from 'react-pdf';
 import { useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -58,6 +59,7 @@ function Ebook() {
     <>
       <Document
         file={`/${params.ebookid}`}
+        loading ={<CircularProgress />}
         onLoadSuccess={onDocumentLoadSuccess}
       >
         <HTMLFlipBook
