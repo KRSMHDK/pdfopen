@@ -10,7 +10,9 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<EbookList />} />
-          <Route path="python" element={<Ebook />} />
+          <Route path="ebook" element={<Ebook />}>
+            <Route path=":ebookid" element={<Ebook />} />
+          </Route>
         </Routes>
       </Layout>
     </div>
