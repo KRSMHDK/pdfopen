@@ -39,11 +39,10 @@ function Ebook() {
 
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [isLoading, setLoading] = useState(true);
   const [pageNumArr, setpageNumArr] = useState([]);
 
   function handleMoveTo50() {
-    book.current.pageFlip().flip(50)
+    book.current.pageFlip().flip(50);
   }
 
   function onDocumentLoadSuccess({ numPages }) {
@@ -53,7 +52,6 @@ function Ebook() {
       arr.push(i);
     }
     setpageNumArr(arr);
-    setLoading(false);
   }
 
   return (
@@ -62,14 +60,23 @@ function Ebook() {
         file={`/${params.ebookid}`}
         onLoadSuccess={onDocumentLoadSuccess}
       >
-        <HTMLFlipBook onFlip ={(e)=> setPageNumber(e.data)}ref={book} width={width} height={height}>
+        <HTMLFlipBook
+          onFlip={(e) => setPageNumber(e.data)}
+          ref={book}
+          width={width}
+          height={height}
+        >
           {pageNumArr.map((num) => (
             <Page pageNumber={num} />
           ))}
         </HTMLFlipBook>
       </Document>
-      <Button onClick = {handleMoveTo50} variant="contained">Move to page 50</Button>
-      <p>{pageNumber} of {numPages}</p>
+      <Button onClick={handleMoveTo50} variant="contained">
+        Move to page 50
+      </Button>
+      <p>
+        {pageNumber} of {numPages}
+      </p>
     </>
   );
 }

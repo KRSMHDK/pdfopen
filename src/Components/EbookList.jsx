@@ -15,19 +15,27 @@ let books = [
   {
     name: 'Lord of the flies',
     filename: 'lord.pdf',
+    image:
+      'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1469412256l/29236541.jpg',
   },
   {
     name: 'Gutshot',
     filename: 'gutshot.pdf',
+    image:
+      'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1405015536l/22237153.jpg',
   },
   {
     name: 'Man',
     filename: 'man.pdf',
+    image:
+      'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1400838779l/20604389.jpg',
   },
   {
-    name: "Dear Life Stories",
-    filename: "Dear Life Stories.pdf"
-  }
+    name: 'Dear Life Stories',
+    filename: 'Dear Life Stories.pdf',
+    image:
+      'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1333579320l/13530981.jpg',
+  },
 ];
 
 export default function EbookList() {
@@ -92,7 +100,7 @@ export default function EbookList() {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image="https://source.unsplash.com/random"
+                    image={book.image}
                     alt="random"
                   />
                 </Link>
