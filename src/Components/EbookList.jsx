@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import * as React from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -44,10 +44,16 @@ const useStyles = makeStyles({
     backgroundPosition: 'center',
     backgroundImage: `url('/main.jpg')`,
   },
+  root: {
+    maxWidth: 310,
+    transition: 'transform 0.15s ease-in-out',
+    '&:hover': { transform: 'scale3d(1.05, 1.05, 1)' },
+  },
 });
 
 export default function EbookList() {
   const classes = useStyles();
+
   return (
     <main>
       {/* Hero unit */}
@@ -103,12 +109,8 @@ export default function EbookList() {
               >
                 <Link to={`/ebook/${book.filename}`}>
                   <CardMedia
+                    className={classes.root}
                     component="img"
-                    sx={
-                      {
-                        // 16:9
-                      }
-                    }
                     image={book.image}
                     alt={book.name}
                   />
