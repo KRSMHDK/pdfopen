@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { pdfjs, Document, Page as ReactPdfPage } from 'react-pdf';
 import { useParams } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const width = 700;
-const height = 1280;
+const width = 500;
+const height = 800;
 
 const Page = React.forwardRef(({ pageNumber }, ref) => {
   return (
@@ -41,6 +42,10 @@ function Ebook() {
   const [isLoading, setLoading] = useState(true);
   const [pageNumArr, setpageNumArr] = useState([]);
 
+  function handleMoveTo50() {
+    book.current.pageFlip().flip(50)
+  }
+  
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
     let arr = [];
@@ -52,13 +57,19 @@ function Ebook() {
   }
 
   return (
-    <Document file={`/${params.ebookid}`} onLoadSuccess={onDocumentLoadSuccess}>
-      <HTMLFlipBook ref={book} width={width} height={height}>
-        {pageNumArr.map((num) => (
-          <Page pageNumber={num} />
-        ))}
-      </HTMLFlipBook>
-    </Document>
+    <>
+      <Document
+        file={`/${params.ebookid}`}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
+        <HTMLFlipBook ref={book} width={width} height={height}>
+          {pageNumArr.map((num) => (
+            <Page pageNumber={num} />
+          ))}
+        </HTMLFlipBook>
+      </Document>
+      <Button onClick = {handleMoveTo50} variant="contained">Move to page 50</Button>
+    </>
   );
 }
 
