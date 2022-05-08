@@ -47,6 +47,7 @@ function Ebook() {
   }
 
   function onDocumentLoadSuccess({ numPages }) {
+    window.scrollTo(0, 0)
     setNumPages(numPages);
     let arr = [];
     for (let i = 1; i <= numPages; i++) {
@@ -57,22 +58,26 @@ function Ebook() {
 
   return (
     <>
-      <Document
-        file={`/${params.ebookid}`}
-        loading ={<CircularProgress />}
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        <HTMLFlipBook
-          onFlip={(e) => setPageNumber(e.data)}
-          ref={book}
-          width={width}
+      <div style={{height: 800}}>
+        <Document
+          file={`/${params.ebookid}`}
+          loading={<CircularProgress />}
           height={height}
+          onLoadSuccess={onDocumentLoadSuccess}
         >
-          {pageNumArr.map((num) => (
-            <Page pageNumber={num} />
-          ))}
-        </HTMLFlipBook>
-      </Document>
+          <HTMLFlipBook
+            onFlip={(e) => setPageNumber(e.data)}
+            ref={book}
+            width={width}
+            height={height}
+          >
+            {pageNumArr.map((num) => (
+              <Page pageNumber={num} />
+            ))}
+          </HTMLFlipBook>
+        </Document>
+      </div>
+
       <Button onClick={handleMoveTo50} variant="contained">
         Move to page 50
       </Button>
