@@ -24,6 +24,10 @@ let books = [
     name: 'Man',
     filename: 'man.pdf',
   },
+  {
+    name: "Dear Life Stories",
+    filename: "Dear Life Stories.pdf"
+  }
 ];
 
 export default function EbookList() {
